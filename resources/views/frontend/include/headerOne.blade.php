@@ -23,7 +23,8 @@
             </div>
             <ul>
                 <li><a href="{{route('front')}}">Home</a></li>
-                <li><a href="{{route('front.all.restaurant')}}">Restaurants</a></li>
+                <li><a href="{{route('front.all.restaurant')}}">Restaurants</a>
+                </li>
                 <li><a href="#0">Categories</a></li>
                 <li class="submenu">
                     <a href="#0" class="show-submenu">Account</a>

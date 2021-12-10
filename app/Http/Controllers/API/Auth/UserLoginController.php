@@ -55,7 +55,7 @@ class UserLoginController extends Controller
                 $new_user->account_status = 0;
                 $new_user->save();
 
-                $success['token'] = $new_user->createToken('')->accessToken;
+                $success['token'] = $new_user->createToken('srtcherclone')->accessToken;
 
                 $new_user_details = User::select('id', 'first_name', 'last_name', 'email', 'phone_number', 'user_devise_token', 'created_at', 'updated_at')->where('id', $new_user->id)->first();
 
@@ -121,7 +121,7 @@ class UserLoginController extends Controller
                     ]);
                 } else {
                     $user = Auth::user();
-                    $success['token'] = $user->createToken('')->accessToken;
+                    $success['token'] = $user->createToken('srtcherclone')->accessToken;
 
                     $user_details = User::select('id', 'first_name', 'last_name', 'email', 'phone_number', 'user_devise_token', 'created_at', 'updated_at')->where('id', Auth::user()->id)->first();
                     $user_details->user_devise_token = $request->user_devise_token;

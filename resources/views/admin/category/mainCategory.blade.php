@@ -170,7 +170,7 @@
             var id = id;
             $.ajax({
                 type: "POST",
-                url: "{{route('admin.single.main.category')}}",
+                url: "{{\Illuminate\Support\Facades\URL::signedRoute('admin.single.main.category')}}",
                 data: {
                     '_token': "{{csrf_token()}}",
                     'id': id,
@@ -188,10 +188,12 @@
 
 
         $(document).ready(function () {
+
+
             $('#maincat').DataTable({
                 "processing": true,
                 "serverSide": true,
-                "ajax": "{{ route('admin.get.main.category') }}",
+                "ajax": "{{ \Illuminate\Support\Facades\URL::signedRoute('admin.get.main.category') }}",
                 columns: [
                     {data: 'main_category_name', name: 'main_category_name', class: 'text-center'},
                     {

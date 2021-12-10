@@ -97,6 +97,7 @@
                         <ul>
                             @foreach($pop_res_left as $pop_reslef)
                                 <li>
+
                                     <a href="{{route('front.restaurant.details',$pop_reslef->id)}}">
                                         <figure>
                                             <img src="{{asset($pop_reslef->restaurant_image)}}"

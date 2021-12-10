@@ -131,8 +131,12 @@
                             <span key="t-ecommerce">Category</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="{{route('admin.main.category')}}" key="t-products">Main-Category</a></li>
-                            <li><a href="{{route('admin.sub.category')}}" key="t-product-detail">Sub-Category</a></li>
+                            <li>
+                                <a href="{{route('admin.main.category')}}"
+                                   key="t-products">Main-Category</a>
+                            </li>
+                            <li><a href="{{URL::signedRoute('admin.sub.category')}}"
+                                   key="t-product-detail">Sub-Category</a></li>
                         </ul>
                     </li>
 
@@ -150,8 +154,10 @@
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
                             <li><a href="{{route('admin.store')}}" key="t-products">Create Store</a></li>
-                            <li><a href="{{route('admin.store.list')}}" key="t-product-detail">Store List</a></li>
-                            <li><a href="{{route('admin.store.gallery')}}" key="t-product-detail">Store Gallery</a></li>
+                            <li><a href="{{route('admin.store.list')}}" key="t-product-detail">Store List</a>
+                            </li>
+                            <li><a href="{{route('admin.store.gallery')}}" key="t-product-detail">Store
+                                    Gallery</a></li>
                         </ul>
                     </li>
 

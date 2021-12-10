@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', [\App\Http\Controllers\FrontendController::class, 'index'])->name('front');
+
 Route::get('/all-restaurants', [\App\Http\Controllers\FrontendController::class, 'all_restaurants'])->name('front.all.restaurant');
+Route::post('/get-all-restaurants', [\App\Http\Controllers\FrontendController::class, 'get_all_restaurants'])->name('front.get.all.restaurant');
 Route::get('/restaurant-details/{id}', [\App\Http\Controllers\FrontendController::class, 'restaurant_details'])->name('front.restaurant.details');
+
+
+//Route::get('/all-restaurants', [\App\Http\Controllers\FrontendController::class, 'all_restaurants'])->name('front.all.restaurant')->middleware('signed');
+//Route::get('/restaurant-details/{id}', [\App\Http\Controllers\FrontendController::class, 'restaurant_details'])->name('front.restaurant.details');
 
 Auth::routes();
 
@@ -41,7 +48,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
         Route::post('/general-settings-save', [\App\Http\Controllers\Admin\AdminController::class, 'general_settings_save'])->name('admin.general.settings.save');
 
         //store type
-        Route::get('/store-type', [\App\Http\Controllers\Admin\AdminRestaurantController::class, 'store_type'])->name('admin.store.type');
+        Route::get('/store-type', [\App\Http\Controllers\Admin\AdminRestaurantController::class, 'store_type'])->name('admin.store.type')->middleware('signed');
         Route::post('/store-type-update', [\App\Http\Controllers\Admin\AdminRestaurantController::class, 'store_type_update'])->name('admin.store.type.update');
 
         //main category

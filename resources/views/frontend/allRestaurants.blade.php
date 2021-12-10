@@ -45,55 +45,7 @@
                                     <a href="#0"><h3>Pizza</h3></a>
                                 </figure>
                             </div>
-                            <div class="item">
-                                <figure>
-                                    <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_2.jpg" alt=""
-                                         class="owl-lazy"></a>
-                                    <a href="#0"><h3>Sushi</h3></a>
-                                </figure>
-                            </div>
-                            <div class="item">
-                                <figure>
-                                    <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_3.jpg" alt=""
-                                         class="owl-lazy"></a>
-                                    <a href="#0"><h3>Dessert</h3></a>
-                                </figure>
-                            </div>
-                            <div class="item">
-                                <figure>
-                                    <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_4.jpg" alt=""
-                                         class="owl-lazy"></a>
-                                    <a href="#0"><h3>Hamburgher</h3></a>
-                                </figure>
-                            </div>
-                            <div class="item">
-                                <figure>
-                                    <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_5.jpg" alt=""
-                                         class="owl-lazy"></a>
-                                    <a href="#0"><h3>Ice Cream</h3></a>
-                                </figure>
-                            </div>
-                            <div class="item">
-                                <figure>
-                                    <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_6.jpg" alt=""
-                                         class="owl-lazy"></a>
-                                    <a href="#0"><h3>Kebab</h3></a>
-                                </figure>
-                            </div>
-                            <div class="item">
-                                <figure>
-                                    <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_7.jpg" alt=""
-                                         class="owl-lazy"></a>
-                                    <a href="#0"><h3>Italian</h3></a>
-                                </figure>
-                            </div>
-                            <div class="item">
-                                <figure>
-                                    <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_8.jpg" alt=""
-                                         class="owl-lazy"></a>
-                                    <a href="#0"><h3>Chinese</h3></a>
-                                </figure>
-                            </div>
+
                         </div>
                         <!-- /carousel -->
                     </div>
@@ -108,46 +60,7 @@
                 <!-- /promo -->
 
                 <div class="append_res">
-                    <div class="row">
-                        <div class="col-12"><h2 class="title_small">Top Rated</h2></div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                            <div class="strip">
-                                <figure>
-                                    <span class="ribbon off">15% off</span>
-                                    <img src="img/lazy-placeholder.png" data-src="img/location_1.jpg"
-                                         class="img-fluid lazy"
-                                         alt="">
-                                    <a href="detail-restaurant.html" class="strip_info">
-                                        <small>Pizza</small>
-                                        <div class="item_title">
-                                            <h3>Da Alfredo</h3>
-                                            <small>27 Old Gloucester St</small>
-                                        </div>
-                                    </a>
-                                </figure>
-                                <ul>
-                                    <li><span class="take yes">Takeaway</span> <span class="deliv yes">Delivery</span>
-                                    </li>
-                                    <li>
-                                        <div class="score"><strong>8.9</strong></div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /strip grid -->
 
-                        <!-- /strip grid -->
-                    </div>
-                    <!-- /row -->
-                    <div class="pagination_fg">
-                        <a href="#">&laquo;</a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">&raquo;</a>
-                    </div>
                 </div>
             </div>
             <!-- /col -->
@@ -161,7 +74,22 @@
     <script src="{{asset('assets/frontend/')}}/js/specific_listing.js"></script>
     <script>
         $(document).ready(function () {
-            
+            let getAllRestaurants = function () {
+                $.ajax({
+                    type: "POST",
+                    url: "{{route('front.get.all.restaurant')}}",
+                    data: {
+                        '_token': "{{csrf_token()}}",
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        $('.append_res').empty();
+                        $('.append_res').html(data.view);
+                    }
+                });
+            };
+
+            getAllRestaurants();
         })
     </script>
 @endsection
